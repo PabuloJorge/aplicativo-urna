@@ -3,11 +3,10 @@ package com.example.urna;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,24 +15,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class FimVotacao extends AppCompatActivity {
-    TextView tv_resultadoVotacao;
     Intent i;
     String votoVereador, votoPrefeito, cpfEleitor;
     RequestQueue requestQueue;
     String url = "https://apiurna.000webhostapp.com/postVoto.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fim_votacao);
 
-        tv_resultadoVotacao = findViewById(R.id.tv_resultadoVotacao);
+
+
         i = getIntent();
 
         requestQueue = Volley.newRequestQueue(this);
@@ -44,7 +45,7 @@ public class FimVotacao extends AppCompatActivity {
 
         postVoto();
 
-        tv_resultadoVotacao.setText("Voto vereador: " + votoVereador + "\nVoto Prefeito: " + votoPrefeito+"\nCPF: "+cpfEleitor);
+
     }
     private void postVoto() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,

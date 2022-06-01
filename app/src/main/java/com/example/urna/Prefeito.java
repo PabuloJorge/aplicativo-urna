@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -161,12 +161,17 @@ public class Prefeito extends AppCompatActivity {
                 mp.stop();
                 mp = MediaPlayer.create(Prefeito.this, R.raw.fim_voto);
                 mp.start();
-                Intent i = new Intent(Prefeito.this, FimVotacao.class);
-                i.putExtra("votoPrefeito", votoPrefeito);
-                i.putExtra("votoVereador",iVereador.getStringExtra("votoVereador"));
-                i.putExtra("cpfEleitor", iVereador.getStringExtra("cpfEleitor"));
-                startActivity(i);
-                finish();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(Prefeito.this, FimVotacao.class);
+                        i.putExtra("votoPrefeito", votoPrefeito);
+                        i.putExtra("votoVereador",iVereador.getStringExtra("votoVereador"));
+                        i.putExtra("cpfEleitor", iVereador.getStringExtra("cpfEleitor"));
+                        startActivity(i);
+                        finish();
+                    }
+                }, 2000);
             }
         });
     }

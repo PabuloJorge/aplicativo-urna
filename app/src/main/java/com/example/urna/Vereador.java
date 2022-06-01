@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -227,11 +226,17 @@ public class Vereador extends AppCompatActivity {
                 mp.stop();
                 mp = MediaPlayer.create(Vereador.this, R.raw.fim_voto);
                 mp.start();
-                Intent i = new Intent(Vereador.this, Prefeito.class);
-                i.putExtra("votoVereador", votoVereador);
-                i.putExtra("cpfEleitor", iIniciarVoto.getStringExtra("cpfEleitor"));
-                startActivity(i);
-                finish();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(Vereador.this, Prefeito.class);
+                        i.putExtra("votoVereador", votoVereador);
+                        i.putExtra("cpfEleitor", iIniciarVoto.getStringExtra("cpfEleitor"));
+                        startActivity(i);
+                        finish();
+                    }
+                }, 2000);
+
             }
         });
     }

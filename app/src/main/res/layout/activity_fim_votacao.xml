@@ -8,12 +8,19 @@
     android:gravity="center"
     tools:context=".FimVotacao">
 
+
     <TextView
-        android:id="@+id/tv_resultadoVotacao"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Resultado votação"
-        android:gravity="center"
-        android:textSize="20sp"/>
+        android:text="Obrigado por participar"
+        android:textSize="30dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/azul"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/leth"
+        android:layout_marginHorizontal="20dp"/>
 
 </LinearLayout>
