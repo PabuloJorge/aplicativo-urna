@@ -8,5 +8,9 @@
     android:gravity="center"
     tools:context=".Tutorial">
 
+    <VideoView
+        android:id="@+id/vv_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

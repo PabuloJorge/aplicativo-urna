@@ -14,10 +14,11 @@ import android.widget.ProgressBar;
 public class MainActivity extends AppCompatActivity {
 
     EditText et_cpf;
-    Button bt_confirmarEleitor;
+    Button bt_confirmarEleitor, bt_tutorial;
     String cpf;
     MediaPlayer mp;
     ProgressBar pb_login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
         bt_confirmarEleitor = findViewById(R.id.bt_confirmarEleitor);
 
         pb_login = findViewById(R.id.pb_login);
+
+        bt_tutorial = findViewById(R.id.bt_tutorial);
+
+        bt_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp.stop();
+                Intent i = new Intent(MainActivity.this, Tutorial.class);
+                startActivity(i);
+            }
+        });
 
         bt_confirmarEleitor.setOnClickListener(new View.OnClickListener() {
 
